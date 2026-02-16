@@ -48,6 +48,29 @@
     .whatsapp-float:hover {transform:scale(1.08); background:#00c2cc;}
     footer {text-align:center; padding:25px; background:rgba(0,0,0,0.7); font-size:14px; opacity:0.75; border-top:1px solid rgba(0,245,255,0.15);}
     @media (max-width:768px){.hero-text h1{font-size:42px;}}
+
+    /* Animations */
+  @keyframes fadeInTop {
+    0% {opacity:0; transform:translateY(-30px);}
+    100% {opacity:1; transform:translateY(0);}
+  }
+
+  @keyframes scaleIn {
+    0% {transform:scale(0.9); opacity:0;}
+    100% {transform:scale(1); opacity:1;}
+  }
+
+  @keyframes pulse {
+    0%, 100% {transform:scale(1);}
+    50% {transform:scale(1.08);}
+  }
+
+  /* Apply animations */
+  .hero-text { animation: fadeInTop 1.2s ease-out forwards; }
+  .grid-cards .card { animation: scaleIn 0.8s ease-out forwards; }
+  .grid-cards .card:nth-child(2) { animation-delay: 0.2s; }
+  .grid-cards .card:nth-child(3) { animation-delay: 0.4s; }
+  .whatsapp-float { animation: pulse 2s infinite ease-in-out; }
   </style>
 </head>
 
