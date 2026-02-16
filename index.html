@@ -11,77 +11,7 @@
   <meta name="author" content="Sentinel X" />
 
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; font-family:"Segoe UI", sans-serif; scroll-behavior:smooth;}
-    body {background:#050712; color:white; overflow-x:hidden;}
-
-    /* Background */
-    .cyber-bg {position:fixed; top:0; left:0; width:100%; height:100%; z-index:-10; background: radial-gradient(circle at top, rgba(0, 245, 255, 0.12), transparent 70%), radial-gradient(circle at bottom, rgba(255, 0, 170, 0.08), transparent 70%), #050712; overflow:hidden;}
-    .grid {position:absolute; width:200%; height:200%; background-image: linear-gradient(rgba(0,245,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0,245,255,0.08) 1px, transparent 1px); background-size:60px 60px; transform:rotate(15deg); animation:gridMove 12s linear infinite; opacity:0.3;}
-    @keyframes gridMove {from {transform:translate(0,0) rotate(15deg);} to {transform:translate(-200px,-200px) rotate(15deg);}}
-    .particle {position:absolute; width:6px; height:6px; background:rgba(0,245,255,0.6); border-radius:50%; box-shadow:0 0 12px rgba(0,245,255,0.9); animation:float 10s infinite ease-in-out;}
-    @keyframes float {0%{transform:translateY(0px); opacity:0.2;} 50%{transform:translateY(-90px); opacity:0.9;} 100%{transform:translateY(0px); opacity:0.2;}}
-
-    /* Header */
-    header {display:flex; justify-content:space-between; align-items:center; padding:18px 8%; background:rgba(0,0,0,0.55); backdrop-filter:blur(12px); position:sticky; top:0; z-index:999; border-bottom:1px solid rgba(0,245,255,0.15);}
-    .logo-area {display:flex; align-items:center; gap:12px;}
-    header h2 {color:#00f5ff; font-weight:900; letter-spacing:2px; font-size:22px;}
-    nav a {color:white; text-decoration:none; margin-left:22px; font-size:14px; opacity:0.9; transition:0.3s;}
-    nav a:hover {color:#00f5ff; opacity:1;}
-
-    /* Hero */
-    .hero {padding:100px 8% 60px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:40px;}
-    .hero-text {flex:1; min-width:280px;}
-    .hero-text h1 {font-size:55px; line-height:1.1; margin-bottom:18px; font-weight:900;}
-    .hero-text span {color:#00f5ff; text-shadow:0 0 18px rgba(0,245,255,0.4);}
-    .hero-text p {font-size:17px; opacity:0.85; margin-bottom:28px; max-width:600px; line-height:1.6;}
-    .btn-group {display:flex; gap:15px; flex-wrap:wrap;}
-    .btn {padding:12px 24px; border-radius:12px; border:none; cursor:pointer; font-weight:bold; font-size:14px; transition:0.3s; text-decoration:none; display:inline-block;}
-    .btn-primary {background:#00f5ff; color:#000; box-shadow:0 0 18px rgba(0,245,255,0.35);}
-    .btn-primary:hover {background:#00c2cc; transform:translateY(-3px);}
-    .btn-outline {border:1px solid #00f5ff; color:#00f5ff; background:transparent;}
-    .btn-outline:hover {background:#00f5ff; color:black; transform:translateY(-3px);}
-    .hero-box {flex:1; min-width:280px; background: rgba(255,255,255,0.05); border:1px solid rgba(0,245,255,0.25); padding:35px; border-radius:20px; box-shadow:0 0 30px rgba(0,245,255,0.12); position:relative; overflow:hidden;}
-    .hero-box::before {content:""; position:absolute; top:-80px; left:-80px; width:200px; height:200px; background:rgba(0,245,255,0.12); border-radius:50%; filter:blur(40px);}
-    .hero-box h3 {margin-bottom:12px; color:#00f5ff; font-size:20px;}
-    .hero-box p {opacity:0.85; margin-bottom:12px; line-height:1.6;}
-
-    /* Sections */
-    section {padding:80px 8%;}
-    .section-title {text-align:center; margin-bottom:55px;}
-    .section-title h2 {font-size:38px; margin-bottom:10px; font-weight:900;}
-    .section-title p {opacity:0.8; max-width:720px; margin:auto; font-size:15px; line-height:1.6;}
-
-    /* Cards */
-    .grid-cards {display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr)); gap:22px;}
-    .card {background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); padding:28px; border-radius:18px; transition:0.35s; position:relative; overflow:hidden;}
-    .card:hover {transform:translateY(-8px); border-color:rgba(0,245,255,0.35); box-shadow:0 0 22px rgba(0,245,255,0.12);}
-    .card h3 {color:#00f5ff; margin-bottom:12px; font-size:18px;}
-    .card ul {padding-left:18px; opacity:0.88; font-size:14px; line-height:1.9;}
-
-    /* Pricing */
-    .price-card h1 {font-size:38px; margin:15px 0;}
-    .price-card ul {list-style:none; margin:20px 0; font-size:14px; opacity:0.9; line-height:2;}
-
-    /* Contact Form */
-    .contact-box {max-width:850px; margin:auto; background: rgba(255,255,255,0.05); border:1px solid rgba(0,245,255,0.15); padding:40px; border-radius:20px; box-shadow:0 0 25px rgba(0,245,255,0.08);}
-    .contact-box input, .contact-box textarea, .contact-box select {width:100%; padding:14px; margin-top:12px; border-radius:12px; border:1px solid rgba(255,255,255,0.15); outline:none; background: rgba(0,0,0,0.4); color:white; font-size:14px;}
-    .contact-box textarea {height:130px; resize:none;}
-    .contact-box button {width:100%; margin-top:18px; padding:14px; border:none; border-radius:12px; background:#00f5ff; font-weight:bold; cursor:pointer; transition:0.3s; font-size:15px;}
-    .contact-box button:hover {background:#00c2cc; transform:translateY(-2px);}
-
-    /* Contact Info */
-    .contact-info {margin-top:18px; font-size:15px; opacity:0.9; line-height:1.8; text-align:center;}
-    .contact-info a {color:#00f5ff; text-decoration:none;}
-    .contact-info a:hover {text-decoration:underline;}
-
-    /* WhatsApp Floating Button */
-    .whatsapp-float {position:fixed; bottom:25px; right:25px; background:#00f5ff; color:black; padding:14px 18px; border-radius:50px; font-weight:bold; text-decoration:none; box-shadow:0 0 20px rgba(0,245,255,0.4); transition:0.3s; z-index:999;}
-    .whatsapp-float:hover {transform:scale(1.08); background:#00c2cc;}
-
-    /* Footer */
-    footer {text-align:center; padding:25px; background:rgba(0,0,0,0.7); font-size:14px; opacity:0.75; border-top:1px solid rgba(0,245,255,0.15);}
-
-    @media (max-width:768px){.hero-text h1{font-size:42px;}}
+    /* ... all your existing CSS styles ... */
   </style>
 </head>
 
@@ -104,6 +34,7 @@
   <!-- Header -->
   <header>
     <div class="logo-area">
+      <!-- Logo SVG -->
       <svg width="40" height="40" viewBox="0 0 100 100">
         <circle cx="50" cy="50" r="40" stroke="#00f5ff" stroke-width="4" fill="transparent">
           <animate attributeName="r" values="35;40;35" dur="2s" repeatCount="indefinite"/>
@@ -280,4 +211,32 @@
     </div>
 
     <div class="contact-info">
-      <p><b>Email:</b> <a href="mailto:Sentinel@gmail.com">Sentinel@gmail.com</a
+      <p><b>Email:</b> <a href="mailto:Sentinel@gmail.com">Sentinel@gmail.com</a></p>
+      <p><b>WhatsApp:</b> <a href="https://wa.me/256743488111">+256 743 488 111</a></p>
+      <p><b>Location:</b> Kampala, Uganda</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2026 Sentinel X. All Rights Reserved. | Built for Security & Dominance.
+  </footer>
+
+  <!-- ====================== Tawk.to Live Chat Script ====================== -->
+  <!-- Place this BEFORE the closing </body> tag -->
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/69936ba66e20711c31416b9c/1jhjtp1s8';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+
+</body> <!-- <-- This is the closing body tag -->
+</html>
